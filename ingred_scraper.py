@@ -30,8 +30,8 @@ def extract_name(url):
   response = simple_get(url)
   if response is not None:
     html = BeautifulSoup(response, 'html.parser')
-    for title in html.select("[class=product-heading]"):
-      return title.h2.string
+    for title in html.select("[class=hf-Bot]"):
+      return title.h1.string
 
 # Extract product cost
 def extract_cost(url):
@@ -39,18 +39,64 @@ def extract_cost(url):
   response = simple_get(url)
   if response is not None:
     html = BeautifulSoup(response, 'html.parser')
-    for plain_cost in html.select("[class=product-content]"):
-      print(plain_cost)
+    for span in html.select("[class=price-characteristic]"):
+      return float(span['content'])
 
-    for orig_cost in html.select("[class=product-strike-base-price]"):
-      print(orig_cost.span.string)
-      return orig_cost.span.string
+# Extract price per unit
+def extract_price_per_unit(url):
+  # Get response from url
+  response = simple_get(url)
+  if response is not None:
+    html = BeautifulSoup(response, 'html.parser')
+    for ppu in html.select("[class*=prod-ProductOffer-ppu]"):
+      words = ppu.string.split(' / ')
+      price = words[0].replace('$', '')
+      units = words[1]
+  return [price, units]
 
 # Prints errors
 def log_error(e):
   print(e)
 
-url = "https://shop.vons.com/product-details.101100167.html"
-url2 = "https://shop.vons.com/product-details.960017900.html?zipcode=92107&r=https%3A%2F%2Fwww.vons.com%2Fhome.html"
-print(extract_name(url))
-extract_cost(url)
+# Scrapes all the food products on walmart
+def extract_food_data():
+  base_url = "https://walmart.com/browse/food/976759/"
+  # Check that the page exists
+  i = 1
+  while does_page_exist(base_url, i):
+    for url in extract_food_urls(base_url + "?page=" + str(i)):
+      name = extract_name(url)
+      cost = extract_cost(url)
+      ppu = extract_price_per_unit(url)
+
+      if (name is not None) and (cost is not None) and (ppu is not None):
+        print(name + " " + str(cost) + " " + str(ppu))
+      i += 1
+
+# Checks if the desired page number exists
+def does_page_exist(base_url, num):
+  # Get response from built url
+  url = base_url + "?page=" + str(num)
+  response = simple_get(url)
+
+  if response is not None:
+    html = BeautifulSoup(response, 'html.parser')
+    # Return false if fbody is empty
+    for error in html.select('body'):
+      if error is not None:
+        return True
+      return False
+  return False
+
+# Extract food urls from page
+def extract_food_urls(url):
+  # Get response from built url
+  response = simple_get(url)
+
+  html = BeautifulSoup(response, 'html.parser')
+  foods = set()
+  for food in html.find_all(attrs={'class': 'search-result-productimage'}):
+    foods.add("https://walmart.com" + food.div.a['href'])
+  return list(foods)
+
+extract_food_data()

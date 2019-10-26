@@ -59,6 +59,16 @@ def get_servings(url):
     for servings in html.select("[id=metaRecipeServings]"):
       return int(servings['content'])
 
+# Returns the link to the image source
+def get_image(url):
+  # Get response from url
+  response = simple_get(url)
+  if response is not None:
+    html = BeautifulSoup(response, 'html.parser')
+    for img in html.select("[class=rec-photo]"):
+      print(img['src'])
+      return img['src']
+
 # Extracts the needed data from all dinner recipes
 def extract_dinner_data():
   base_url = "https://www.allrecipes.com/recipes/17562/dinner/"
@@ -69,6 +79,7 @@ def extract_dinner_data():
       time = get_time(url)
       name = get_name(url)
       servings = get_servings(url)
+      img = get_image(url)
       
       if (time is not None) and (name is not None) and (servings is not None):
         print(str(time) + " " + name + " " + str(servings))
