@@ -59,8 +59,48 @@ def get_servings(url):
     for servings in html.select("[id=metaRecipeServings]"):
       return int(servings['content'])
 
-url1 = 'https://www.allrecipes.com/recipe/65691/pumpkin-waffles-with-apple-cider-syrup/?internalSource=editorial_2&referringId=78&referringContentType=Recipe%20Hub';
-url2 = 'https://www.allrecipes.com/recipe/23376/cinnamon-swirl-bread/'
-print(get_time(url2))
-print(get_name(url2))
-print(get_servings(url2))
+# Extracts the needed data from all dinner recipes
+def extract_dinner_data():
+  base_url = "https://www.allrecipes.com/recipes/17562/dinner/"
+  # Check that this page exists
+  i = 1
+  while does_page_exist(base_url, i):
+    for url in extract_recipe_urls(base_url + "?page=" + str(i)):
+      time = get_time(url)
+      name = get_name(url)
+      servings = get_servings(url)
+      
+      if (time is not None) and (name is not None) and (servings is not None):
+        print(str(time) + " " + name + " " + str(servings))
+    i += 1
+
+# Checks if the desired page number exists
+def does_page_exist(base_url, num):
+# Get response from built url
+  url = base_url + "?page=" + str(num)
+  response = simple_get(url)
+  
+  if response is not None:
+    html = BeautifulSoup(response, 'html.parser')
+    # Return false if found tag with error-page class
+    for error in html.select("[class=error-page]"):
+      return False
+
+    # Return true if didn't find error-page class
+    return True
+
+  # Return false if response is none
+  return False
+
+# Extract recipe urls from page
+def extract_recipe_urls(url):
+  # Get response from built url
+  response = simple_get(url)
+
+  html = BeautifulSoup(response, 'html.parser')
+  recipes = set()
+  for recipe in html.select('a[class=fixed-recipe-card__title-link]'):
+    recipes.add(recipe['href'])
+  return list(recipes)
+
+extract_dinner_data()
