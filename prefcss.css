@@ -1,0 +1,51 @@
+body{
+    background-image:url("fest.jpeg") ;
+    background-repeat:no-repeat;
+    background-position: fixed;
+    background-size: 100% 100%;
+}
+
+form{
+    border: black 5px;
+    background-color: white;
+    margin: 15% auto;
+    color: black;
+    font-family: 'Fjalla One', sans-serif;
+    font-variant:small-caps;
+    font-weight:bold;
+    padding: 7px;
+    width: 30%;
+    vertical-align: middle;
+    
+}
+p{
+    font-size: 43px;
+    color: white;
+    /*text-border: 2px 2px black;*/
+    text-align :center;
+    font-style: italic;
+    text-shadow: 1px 1px black;
+
+}
+
+h1{
+    font-family: 'Lobster', cursive;
+    color:white;
+    text-shadow: 5px 5px #000000;
+    font-size: 100px;
+    text-align:center;
+}
+
+/*
+#bg{
+    position:fixed;
+    min-width: 1000px;
+    min-height: 1000px;
+    z-index:1;
+}*/
+
+#tp{
+    text-align:center;
+}
+
+

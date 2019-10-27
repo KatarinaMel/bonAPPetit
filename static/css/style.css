@@ -66,12 +66,15 @@
 
 
 @media only screen and (min-width: 500px){
-    .home
+    .body{
+        background-color: olive;
+
+    }
     .week-plan {
                         display: grid;
                         grid-template-columns: 1fr 1fr 1fr 1fr;
                         grid-gap: 0.5em;
-                        grid-auto-rows:minmax(300px, auto);
+                        grid-auto-rows:minmax(200px, auto);
                         grid-auto-columns: minmax(150px, auto);
                         justify-items:stretch;
                         align-items:stretch;
@@ -97,11 +100,13 @@
         background-color: white;
         text-align: center;
         font: 2em bold;
+        font-family: Constantina,Georgia,'Nimbus Roman No9 L',serif;
     }
 
     .fields{
         padding: 0.5 em;
         font: 1.5em bold;
+        font-family: Constantina,Georgia,'Nimbus Roman No9 L',serif;
     }
     
     .tues{
@@ -144,4 +149,10 @@
         grid-column:1/5;
         grid-row: 6/7;
     }
+
+    input[type=button] {
+        width: minmax(20em, 1000em);  
+        height: 2em;
     }
+}
+    
