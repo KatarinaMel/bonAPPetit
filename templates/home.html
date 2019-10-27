@@ -10,89 +10,25 @@
                 <p id="week-plan">Here's your weekly plan</p>
             </div>
             <div class = "wrapper">
-                <div class = "weekday">
-                    <div  class = "day">Monday
-                    </div>
-                    <div class ="fields">
-                        <p id ="monTitle">Recipe:</p>
-                        <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p id ="monPrice">Price:</p>
-                        <p id ="monTime">Time</p>
-                        <input type="button" value="Different Recipe" onclick="">
-                    </div>
-                </div>
 
-                <div class = "weekday">
-                    <div  class = "day">Tuesday
-                    </div>
-                    <div class ="fields">
-                        <p id ="tuesTitle">Recipe:</p>
-                        <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p id ="tuesPrice">Price:</p>
-                        <p id ="tuesTime">Time</p>
-                        <input type="button" value="Different Recipe" onclick="">
-                    </div>
-                </div>
+{% for entry in table %}
+    <div class="weekday">
+        <div class="day">"{{entry[0]}}"
+        </div>
+        <div class="fields">
+            <p id="monTitle">{{ entry[1][0] }}</p>
+            <img src="{{ url_for('static', filename = '{{ entry[1][1] }}') }}" alt="ramen">
+            <href src="{{ entry[1][2] }}">link</href>
+            <p id="monPrice">{{ entry[1][5] }}</p>
+            <p id="monTime">{{entry[1][3]}}</p>
+            <input type="button" value="Different Recipe" onclick="">
+        </div>
+    </div>
 
-                <div class = "weekday">
-                    <div  class = "day">Wednesday
-                    </div>
-                    <div class ="fields">
-                        <p id ="wedTitle">Recipe:</p>
-                        <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p id ="wedPrice">Price:</p>
-                        <p id ="wedTime">Time</p>
-                        <input type="button" value="Different Recipe" onclick="">
-                    </div>
-                </div>
+{% endfor %}
+</div>
 
-                <div class = "weekday">
-                    <div  class = "day">Thursday
-                    </div>
-                    <div class ="fields">
-                        <p id ="thursTitle">Recipe:</p>
-                        <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p id ="thursPrice">Price:</p>
-                        <p id ="thursTime">Time</p>
-                        <input type="button" value="Different Recipe" onclick="">
-                    </div>
-                </div>
-
-                <div class = "weekday">
-                    <div  class = "day">Friday
-                    </div>
-                    <div class ="fields">
-                        <p id ="friTitle">Recipe:</p>
-                        <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p id ="friPrice">Price:</p>
-                        <p id ="friTime">Time</p>
-                        <input type="button" value="Different Recipe" onclick="">
-                    </div>
-                </div>
-
-                <div class = "weekday">
-                    <div  class = "day">Saturday
-                    </div>
-                    <div class ="fields">
-                        <p id ="satTitle">Recipe:</p>
-                        <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p id ="satPrice">Price:</p>
-                        <p id ="satTime">Time</p>
-                        <input type="button" value="Different Recipe" onclick="">
-                    </div>
-                </div>
-
-                <div class = "weekday">
-                    <div  class = "day">Sunday
-                    </div>
-                    <div class ="fields">
-                        <p id ="sunTitle">Recipe:</p>
-                        <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p id ="sunPrice">Price:</p>
-                        <p id ="sunTime">Time</p>
-                        <input type="button" value="Different Recipe" onclick="">
-                    </div>
-                </div>
+                
 
             </div>
             <div class= "header">

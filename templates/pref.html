@@ -10,17 +10,17 @@
         <h1>Bon-APP-etit</h1>
         <p>Tell us your preferences...</p>
         <div id = "tp">
-            <form  id="f" action = "">
+            <form  id="f" action = '/home' method= "POST">
                 <label for = "num">Weekly Budget:</label>
-                <input type="number" name="num" id = "num" min = 7 max = 500><br>
+                <input type="number" name="budget" id = "budget" min = 7 max = 500><br>
                 <br>
                 <label for = "num">Serving:</label>
-                <input type="number" name="num" id = "num" min = 1 max = 12><br>
+                <input type="number" name="service" id = "service" min = 1 max = 12><br>
                 <br>
                 <label for = "num">Prep Time:</label>
-                <span><input type="number" name="num" id = "num" min = 10 max= 480>min</span><br>
+                <span><input type="number" name="prep_time" id = "prep_time" min = 10 max= 480>min</span><br>
                 <br>
-                <input type = "button" onclick ="location.href = 'home'" value ="Submit">
+                <input type = "submit" name = "form" onclick="location.href='home'" value="Submit">
          </form>
     </body>
 </html>
