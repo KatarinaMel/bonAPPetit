@@ -69,20 +69,65 @@ def get_image(url):
       print(img['src'])
       return img['src']
 
+# Extracts list of ingredients and calculates cost
+def calculate_cost(url):
+  # Get response from url
+  response = simple_get(url)
+  cost = 0
+  if response is not None:
+    html = BeautifulSoup(response, 'html.parser')
+    for ingred_item in html.select("[itemprop=recipeIngredient]"):
+      ingred = clean_up_ingred(ingred_item.string)
+      cost += 1
+  return cost
+
+# Clean up ingredients from raw html
+def clean_up_ingred(text):
+  # Get rid of anything after a comma (e.g. egg, beated --> egg)
+  unit_ingred = text.split(',')[0]
+  vec = unit_ingred.split(' ')
+
+  # Get rid of the number
+  start_idx = 0
+  while (vec[start_idx].isdigit()) or ("/" in vec[start_idx]):
+    start_idx += 1
+
+  # Get rid of (...)
+  if vec[start_idx].startswith("("):
+    while not vec[start_idx].endswith(")"):
+      start_idx += 1
+    start_idx += 1
+
+  # Get rid of units of measurements
+  units = ['cup', 'tablespoon', 'teaspoon', 'pound', 'ounce', 'pack', 'grate']
+  while any(unit in vec[start_idx] for unit in units):
+    start_idx += 1
+
+  # Return the final ingredient
+  ingred = vec[start_idx]
+  start_idx += 1
+  while start_idx < len(vec):
+    ingred += (" " + vec[start_idx])
+    start_idx += 1
+
+  return ingred
+
+
 # Extracts the needed data from all dinner recipes
 def extract_dinner_data():
   base_url = "https://www.allrecipes.com/recipes/17562/dinner/"
   # Check that this page exists
   i = 1
-  while does_page_exist(base_url, i):
+  while does_page_exist(base_url, i) and i < 2:  
     for url in extract_recipe_urls(base_url + "?page=" + str(i)):
       time = get_time(url)
       name = get_name(url)
       servings = get_servings(url)
       img = get_image(url)
+      cost = calculate_cost(url)
       
-      if (time is not None) and (name is not None) and (servings is not None):
-        print(str(time) + " " + name + " " + str(servings))
+      if (time is not None) and (name is not None) and (servings is not None) and (cost is not None):
+        print(str(time) + " " + name + " " + str(servings) + " " + str(cost))
     i += 1
 
 # Checks if the desired page number exists
