@@ -3,84 +3,100 @@
         <head>
             <title>Home</title>
             <link rel = "stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+            <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
         </head>
         <body>
-            <div class="week-plan">
-                <div class="box top">Header
-                </div>
-                <div class="box mon">
-                    <div  class = "day">Monday</div>
+            <div class= "header">
+                <p id="week-plan">Here's your weekly plan</p>
+            </div>
+            <div class = "wrapper">
+                <div class = "weekday">
+                    <div  class = "day">Monday
+                    </div>
                     <div class ="fields">
                         <p id ="monTitle">Recipe:</p>
                         <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p id ="monTitle">Price:</p>
-                        <p id ="monTitle">Time</p>
+                        <p id ="monPrice">Price:</p>
+                        <p id ="monTime">Time</p>
                         <input type="button" value="Different Recipe" onclick="">
                     </div>
                 </div>
-                <div class="box tues">
-                    <div  class = "day">Tuesday</div>
+
+                <div class = "weekday">
+                    <div  class = "day">Tuesday
+                    </div>
                     <div class ="fields">
-                        <p>Recipe:</p>
+                        <p id ="tuesTitle">Recipe:</p>
                         <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p>Price:</p>
-                        <p>Time:</p>
+                        <p id ="tuesPrice">Price:</p>
+                        <p id ="tuesTime">Time</p>
                         <input type="button" value="Different Recipe" onclick="">
                     </div>
                 </div>
-                <div class="box wed">
-                    <div  class = "day">Wednesday</div>
+
+                <div class = "weekday">
+                    <div  class = "day">Wednesday
+                    </div>
                     <div class ="fields">
-                        <p>Recipe:</p>
+                        <p id ="wedTitle">Recipe:</p>
                         <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p>Price:</p>
-                        <p>Time:</p>
+                        <p id ="wedPrice">Price:</p>
+                        <p id ="wedTime">Time</p>
                         <input type="button" value="Different Recipe" onclick="">
                     </div>
                 </div>
-                <div class="box thurs">
-                    <div  class = "day">Thursday</div>
+
+                <div class = "weekday">
+                    <div  class = "day">Thursday
+                    </div>
                     <div class ="fields">
-                        <p>Recipe:</p>
+                        <p id ="thursTitle">Recipe:</p>
                         <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p>Price:</p>
-                        <p>Time:</p>
+                        <p id ="thursPrice">Price:</p>
+                        <p id ="thursTime">Time</p>
                         <input type="button" value="Different Recipe" onclick="">
                     </div>
                 </div>
-                <div class="box fri">
-                    <div  class = "day">Friday</div>
+
+                <div class = "weekday">
+                    <div  class = "day">Friday
+                    </div>
                     <div class ="fields">
-                        <p>Recipe:</p>
+                        <p id ="friTitle">Recipe:</p>
                         <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p>Price:</p>
-                        <p>Time:</p>
+                        <p id ="friPrice">Price:</p>
+                        <p id ="friTime">Time</p>
                         <input type="button" value="Different Recipe" onclick="">
                     </div>
                 </div>
-                <div class="box sat">
-                    <div  class = "day">Saturday</div>
+
+                <div class = "weekday">
+                    <div  class = "day">Saturday
+                    </div>
                     <div class ="fields">
-                        <p>Recipe:</p>
+                        <p id ="satTitle">Recipe:</p>
                         <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p>Price:</p>
-                        <p>Time:</p>
+                        <p id ="satPrice">Price:</p>
+                        <p id ="satTime">Time</p>
                         <input type="button" value="Different Recipe" onclick="">
                     </div>
                 </div>
-                <div class="box sun">
-                    <div  class = "day">Sunday</div>
+
+                <div class = "weekday">
+                    <div  class = "day">Sunday
+                    </div>
                     <div class ="fields">
-                        <p>Recipe:</p>
+                        <p id ="sunTitle">Recipe:</p>
                         <img src="{{ url_for('static', filename = 'ramen.jfif') }}" alt = "ramen">
-                        <p>Price:</p>
-                        <p>Time:</p>
+                        <p id ="sunPrice">Price:</p>
+                        <p id ="sunTime">Time</p>
                         <input type="button" value="Different Recipe" onclick="">
                     </div>
                 </div>
-                <div class="box total">Total
-                </div>
-                <div class="box bottom">Footer</div>     
+
+            </div>
+            <div class= "header">
+                <p>Footer</p>
             </div>
 
         </body>

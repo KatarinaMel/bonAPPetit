@@ -1,106 +1,42 @@
-
-
-@media only screen and (min-width: 800px){
-.week-plan {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-                    grid-gap: 0.5em;
-                    grid-auto-rows:minmax(150px, auto);
-                    grid-auto-columns: minmax(100px, auto);
-                    justify-items:stretch;
-                    align-items:stretch;
-                }
-.week-plan >div{
-                    background:darkgrey;
-                    padding: 0.5em;
-                }
-.top {
-        grid-column: 1/8;
-        grid-row:1/2;                  
-}
-
-.mon{
-    grid-column:1/2;
-    grid-row:2/5;
-}
-
-.tues{
-    grid-column:2/3;
-    grid-row:2/5;
-}
-
-.wed{
-    grid-column:3/4;
-    grid-row:2/5;
-}
-
-.thurs{
-    grid-column:4/5;
-    grid-row:2/5;
-}
-
-.fri{
-    grid-column:5/6;
-    grid-row:2/5;
-}
-
-.sat{
-    grid-column:6/7;
-    grid-row:2/5;
-}
-
-.sun{
-    grid-column:7/8;
-    grid-row:2/5;
-}
-
-.bottom{
-    grid-column:1/8;
-    grid-row: 5/6;
-}
-
-.total{
-    visibility: hidden;
-}
-}
-
-
-@media only screen and (min-width: 500px){
-    .body{
-        background-color: olive;
-
-    }
-    .week-plan {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr 1fr 1fr;
-                        grid-gap: 0.5em;
-                        grid-auto-rows:minmax(200px, auto);
-                        grid-auto-columns: minmax(150px, auto);
-                        justify-items:stretch;
-                        align-items:stretch;
-                    }
-    .week-plan >div{
-                        background:lightgray;
-                        padding: 0.5em black;
-                        border: 1px solid black;
-                    }
-    .top {
-            grid-column: 1/5;
-            grid-row:1/2;                  
-    }
+    #week-plan{
+        font-size:3em bold;
+        color:black;
+        font-family: 'Lobster', cursive;
+        text-shadow: 1px 1px white;
+    }    
     
-    .mon{
-        grid-column:1/2;
-        grid-row:2/4;
+    .header{
+        width: minmax(100px, auto);
+        height: minmax(100px, auto);
+        background:rgb(185, 185, 252);
+        margin-top:0;
     }
 
-    .day{
-                
-        border: 1px solid black;
+    .wrapper {
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content:space-around;
+        align-items:stretch;
+    }
+
+    .weekday{
+        background:rgb(185, 185, 252);
+        padding: 0.5em;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: content;
+        border: white solid;
+    }
+
+    .day{ 
+        border: 1px double black;
         background-color: white;
         text-align: center;
+        color: black;
+        text-shadow: 1px 1px 2px    rgb(155, 147, 172)/*rgb(127, 127, 182)*/;  
         font: 2em bold;
-        font-family: Constantina,Georgia,'Nimbus Roman No9 L',serif;
+        font-family: 'Lobster', cursive;
     }
 
     .fields{
@@ -108,51 +44,9 @@
         font: 1.5em bold;
         font-family: Constantina,Georgia,'Nimbus Roman No9 L',serif;
     }
-    
-    .tues{
-        grid-column:2/3;
-        grid-row:2/4;
-    }
-    
-    .wed{
-        grid-column:3/4;
-        grid-row:2/4;
-    }
-    
-    .thurs{
-        grid-column:4/5;
-        grid-row:2/4;
-    }
-    
-    .fri{
-        grid-column:1/2;
-        grid-row:4/6;
-    }
-    
-    .sat{
-        grid-column:2/3;
-        grid-row:4/6;
-    }
-    
-    .sun{
-        grid-column:3/4;
-        grid-row:4/6;
-    }
-
-    .total{
-        visibility:visible;
-        grid-column:4/5;
-        grid-row:4/6;
-    }
-    
-    .bottom{
-        grid-column:1/5;
-        grid-row: 6/7;
-    }
 
     input[type=button] {
         width: minmax(20em, 1000em);  
         height: 2em;
     }
-}
     
